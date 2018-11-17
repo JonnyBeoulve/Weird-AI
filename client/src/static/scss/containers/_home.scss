@@ -3,9 +3,17 @@
 
     &-card {
         position: absolute;
+        padding: 40px 40px 40px 40px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        border: 2px solid $color-grey-light-3;
+        border-radius: 3px;
+
+        @include respond(phone) {
+            width: 95%;
+            margin: 0 5px 0 5px;
+        }
     
         &-input {
             display: block;
@@ -13,8 +21,8 @@
             width: 100%;
             height: 60px;
             padding: 10px 10px 10px 10px;
-            border-radius: 2px;
-            border: 1px solid $color-grey-light-3;
+            border-radius: 3px;
+            border: 1px solid $color-grey-light-2;
             font-family: inherit;
     
             &:focus {
@@ -27,18 +35,47 @@
             margin: 0 0 0 0;
             width: 200px;
             padding: 10px 10px 10px 10px;
-            border-radius: 2px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            background-color: $color-primary;
+            color: $color-white;
+            border: 1px solid transparent;
+            font-family: inherit;
+            cursor: pointer;
+          
+            -webkit-box-shadow: 8px 10px 20px 0 rgba(46,61,73,.15);
+            -moz-box-shadow: 8px 10px 20px 0 rgba(46,61,73,.15);
+            box-shadow: 8px 10px 20px 0 rgba(46,61,73,.15);
+    
+            @include respond(phone) {
+                margin: 5px 5px 5px 5px;
+            }
+
+            &:hover {
+                color: $color-grey-light-3;
+            }
+        }
+
+        &-button-2 {
+            display: block;
+            margin: 0 0 0 0;
+            width: 200px;
+            padding: 10px 10px 10px 10px;
+            border-radius: 3px;
             text-transform: uppercase;
             background-color: $color-secondary-light;
             color: $color-white;
             border: 1px solid transparent;
             font-family: inherit;
             cursor: pointer;
-            z-index: 9999;
           
             -webkit-box-shadow: 8px 10px 20px 0 rgba(46,61,73,.15);
             -moz-box-shadow: 8px 10px 20px 0 rgba(46,61,73,.15);
             box-shadow: 8px 10px 20px 0 rgba(46,61,73,.15);
+
+            @include respond(phone) {
+                margin: 5px 5px 5px 5px;
+            }
     
             &:hover {
                 color: $color-grey-light-3;
@@ -95,6 +132,28 @@
                 padding: 10px 10px 10px 10px;
                 border-radius: 2px;
                 text-transform: uppercase;
+                background-color: $color-primary;
+                color: $color-white;
+                border: 1px solid transparent;
+                font-family: inherit;
+                cursor: pointer;
+              
+                -webkit-box-shadow: 8px 10px 20px 0 rgba(46,61,73,.15);
+                -moz-box-shadow: 8px 10px 20px 0 rgba(46,61,73,.15);
+                box-shadow: 8px 10px 20px 0 rgba(46,61,73,.15);
+        
+                &:hover {
+                    color: $color-grey-light-3;
+                }
+            }
+
+            &-button-2 {
+                display: block;
+                margin: 20px 0 20px 0;
+                width: 200px;
+                padding: 10px 10px 10px 10px;
+                border-radius: 2px;
+                text-transform: uppercase;
                 background-color: $color-secondary-light;
                 color: $color-white;
                 border: 1px solid transparent;
@@ -144,6 +203,28 @@
                 padding: 10px 10px 10px 10px;
                 border-radius: 2px;
                 text-transform: uppercase;
+                background-color: $color-primary;
+                color: $color-white;
+                border: 1px solid transparent;
+                font-family: inherit;
+                cursor: pointer;
+              
+                -webkit-box-shadow: 8px 10px 20px 0 rgba(46,61,73,.15);
+                -moz-box-shadow: 8px 10px 20px 0 rgba(46,61,73,.15);
+                box-shadow: 8px 10px 20px 0 rgba(46,61,73,.15);
+        
+                &:hover {
+                    color: $color-grey-light-3;
+                }
+            }
+
+            &-button-2 {
+                display: block;
+                margin: 40px auto;
+                width: 200px;
+                padding: 10px 10px 10px 10px;
+                border-radius: 2px;
+                text-transform: uppercase;
                 background-color: $color-secondary-light;
                 color: $color-white;
                 border: 1px solid transparent;
@@ -161,10 +242,14 @@
         }
     }
 
-    &-answer-correct {
+    &-answer {
         height: 100vh;
         width: 100vw;
         background-size: cover;
+        
+        @include respond(phone) {
+            background-position: top center;
+        }
 
         &-text {
             position: absolute;
