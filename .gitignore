@@ -11,3 +11,5 @@
 /DataIngester/DataIngester/obj
 /Weird-AI-API/WeirdAI-API/obj/Debug/netcoreapp2.1
 /Weird-AI-API/WeirdAI-API/obj
+/DataIngester/.vs/DataIngester/DesignTimeBuild/.dtbcache
+/Weird-AI-API/WeirdAI-API/bin/Debug/netcoreapp2.1
