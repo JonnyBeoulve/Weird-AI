@@ -114,10 +114,10 @@ class HomeContainer extends Component {
               <div className="home-card">
                 <h2 className="home-card-header">Throw us a word to write your own song.</h2>
                 <form onSubmit={this.handleTagSubmit}>
-                  <input className="home-card-input" type="email" name="email" placeholder="Enter a tag" onChange={e => this.setState({ tagInput: e.target.value })} />
+                  <input className="home-card-input" type="email" name="email" placeholder="Enter a word" onChange={e => this.setState({ tagInput: e.target.value })} />
                   <div className="home-card-buttons">
                     <button className="home-card-button" type="submit" value="Submit">Generate a Song</button>
-                    <button className="home-card-button" onClick={this.handleGoToQuiz}>Can You Spot the Fake?</button>
+                    <button className="home-card-button-2" onClick={this.handleGoToQuiz}>Can You Spot the Fake?</button>
                   </div>
                 </form>
               </div>
@@ -156,7 +156,7 @@ class HomeContainer extends Component {
                     <h2 className="home-quiz-card-header">Lyric 2</h2>
                     <h3 className="home-quiz-card-lyric">As I walk through the valley where I harvest my grain</h3>
                     <h3 className="home-quiz-card-lyric">I take a look at my wife and realize she's very plain</h3>
-                    <button className="home-quiz-card-button" onClick={this.handleSelectLyric2}>Weird A.I.</button>
+                    <button className="home-quiz-card-button-2" onClick={this.handleSelectLyric2}>Weird A.I.</button>
                   </div>
                 </div>
               </div>
@@ -164,13 +164,13 @@ class HomeContainer extends Component {
           : null
         }
         {(this.state.showCorrectAnswerCard)
-          ? <div className="home-answer-correct" style={{backgroundImage: 'url(' + require('../../static/img/al-yankovic.jpg') + ')'}}>
-              <h2 className="home-answer-correct-text">Correct! You successfully detected the Weird A.I. robot.</h2>
+          ? <div className="home-answer" style={{backgroundImage: 'url(' + require('../../static/img/al-yankovic.jpg') + ')'}}>
+              <h2 className="home-answer-text">Correct! You successfully detected the A.I.</h2>
               <div className="home-lyrics-footer">
                 <div className="row">
                   <div className="home-card-buttons">
                     <button className="home-lyrics-footer-button" onClick={this.handleGoToQuiz}>Try Another Quote</button>
-                    <button className="home-lyrics-footer-button" onClick={this.handleGoToInput}>Return Home</button>
+                    <button className="home-lyrics-footer-button-2" onClick={this.handleGoToInput}>Return Home</button>
                   </div>
                 </div>
               </div>
@@ -178,13 +178,13 @@ class HomeContainer extends Component {
           : null
         }
         {(this.state.showWrongAnswerCard)
-          ? <div className="home-answer-correct" style={{backgroundImage: 'url(' + require('../../static/img/al-yankovic.jpg') + ')'}}>
-              <h2 className="home-answer-correct-text">Wrong! The Weird A.I. robot defeated you.</h2>
+          ? <div className="home-answer" style={{backgroundImage: 'url(' + require('../../static/img/al-yankovic.jpg') + ')'}}>
+              <h2 className="home-answer-text">Wrong! The A.I. has defeated you.</h2>
               <div className="home-lyrics-footer">
                 <div className="row">
                   <div className="home-card-buttons">
                     <button className="home-lyrics-footer-button" onClick={this.handleGoToQuiz}>Try Another Quote</button>
-                    <button className="home-lyrics-footer-button" onClick={this.handleGoToInput}>Return Home</button>
+                    <button className="home-lyrics-footer-button-2" onClick={this.handleGoToInput}>Return Home</button>
                   </div>
                 </div>
               </div>
