@@ -6,10 +6,25 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+    
+        &-input {
+            display: block;
+            margin: 40px auto 40px auto;
+            width: 100%;
+            height: 60px;
+            padding: 10px 10px 10px 10px;
+            border-radius: 2px;
+            border: 1px solid $color-grey-light-3;
+            font-family: inherit;
+    
+            &:focus {
+                border: 1px solid $color-tertiary-light;
+            }
+        }
 
         &-button {
             display: block;
-            margin: 10px auto 10px;
+            margin: 0 0 0 0;
             width: 200px;
             padding: 10px 10px 10px 10px;
             border-radius: 2px;
@@ -28,20 +43,11 @@
                 color: $color-grey-light-3;
             }
         }
-    
-        &-input {
-            display: block;
-            margin: 40px auto 40px auto;
-            width: 100%;
-            height: 60px;
-            padding: 10px 10px 10px 10px;
-            border-radius: 2px;
-            border: 1px solid $color-grey-light-3;
-            font-family: inherit;
-    
-            &:focus {
-                border: 1px solid $color-tertiary-light;
-            }
+
+        &-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
         }
     
         &-form {
@@ -62,6 +68,46 @@
             text-align: center;
             color: $color-grey-dark-2;
             font-size: 2.5em;
+        }
+    }
+
+    &-lyrics {
+        padding: 100px 0 100px 0;
+
+        &-text {
+            font-size: 2em;
+            text-align: center;
+        }
+
+        &-footer {
+            position: fixed;
+            background-color: $color-white;
+            bottom: 0;
+            width: 100%;
+            height: 80px;
+            z-index: 999;
+
+            &-button {
+                display: block;
+                margin: 20px 0 20px 0;
+                width: 200px;
+                padding: 10px 10px 10px 10px;
+                border-radius: 2px;
+                text-transform: uppercase;
+                background-color: $color-secondary-light;
+                color: $color-white;
+                border: 1px solid transparent;
+                font-family: inherit;
+                cursor: pointer;
+              
+                -webkit-box-shadow: 8px 10px 20px 0 rgba(46,61,73,.15);
+                -moz-box-shadow: 8px 10px 20px 0 rgba(46,61,73,.15);
+                box-shadow: 8px 10px 20px 0 rgba(46,61,73,.15);
+        
+                &:hover {
+                    color: $color-grey-light-3;
+                }
+            }
         }
     }
 }
