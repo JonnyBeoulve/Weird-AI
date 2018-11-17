@@ -1,9 +1,10 @@
 ﻿{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
   "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
+    "windowsAuthentication": false, 
+    "anonymousAuthentication": true, 
     "iisExpress": {
-      "applicationUrl": "http://localhost:51913/",
+      "applicationUrl": "http://localhost:56431",
       "sslPort": 0
     }
   },
@@ -16,14 +17,14 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Weird_AI_API": {
+    "WeirdAI_API": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/values",
+      "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:51914"
+      }
     }
   }
 }
