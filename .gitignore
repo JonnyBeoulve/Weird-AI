@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Weird-AI-API/.vs
+/Weird-AI-API/Weird-AI-API/obj/Debug/netcoreapp1.1
+/Weird-AI-API/Weird-AI-API/obj
+/Weird-AI-API/Weird-AI-API/obj
