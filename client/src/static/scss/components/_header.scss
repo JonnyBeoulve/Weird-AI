@@ -18,10 +18,19 @@
             line-height: 80px;
             font-family: "Abril Fatface", sans-serif;
             letter-spacing: 1.5px;
+
+            @include respond(phone) {
+                font-size: 4em;
+                padding: 0 0 0 10px;
+            }
         }
     
         &-links {
             padding: 15px 0 15px 0;
+
+            @include respond(phone) {
+                padding: 15px 10px 15px 0;
+            }
         }
     
         &-link {
