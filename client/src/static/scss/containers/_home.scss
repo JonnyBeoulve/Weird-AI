@@ -110,4 +110,30 @@
             }
         }
     }
+
+    &-quiz {
+        padding: 100px 0 100px 0;
+        text-align: center;
+
+        &-header {
+            margin: 0 0 40px 0;
+            font-size: 3em;
+        }
+
+        &-card {
+            padding: 40px 20px 40px 20px;
+            text-align: center;
+            border: 1px solid $color-grey-light-5;
+
+            &-header {
+                font-size: 2.5em;
+                margin: 0 0 40px 0;
+            }
+
+            &-lyric {
+                font-size: 1.8em;
+                font-style: italic;
+            }
+        }
+    }
 }
