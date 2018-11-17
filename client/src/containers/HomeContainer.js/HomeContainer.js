@@ -16,7 +16,9 @@ class HomeContainer extends Component {
       tagInput: '',
       showInputCard: true,
       showLyricsCard: false,
-      showQuizCard: false
+      showQuizCard: false,
+      showCorrectAnswerCard: false,
+      showWrongAnswerCard: false
     };
   }
 
@@ -63,15 +65,43 @@ class HomeContainer extends Component {
   handleGoToQuiz = () => {
     this.setState({
       showInputCard: false,
-      showQuizCard: true
+      showLyricsCard: false,
+      showQuizCard: true,
+      showCorrectAnswerCard: false,
+      showWrongAnswerCard: false
     });
   }
 
   /* This will handle transitioning a user back to the input card. */
-  handleReturnToInput = () => {
+  handleGoToInput = () => {
     this.setState({
       showInputCard: true,
-      showLyricsCard: false
+      showLyricsCard: false,
+      showQuizCard: false,
+      showCorrectAnswerCard: false,
+      showWrongAnswerCard: false
+    });
+  }
+
+  /* This will handle seletion of lyric 1. */
+  handleSelectLyric1 = () => {
+    this.setState({
+      showInputCard: false,
+      showLyricsCard: false,
+      showQuizCard: false,
+      showCorrectAnswerCard: true,
+      showWrongAnswerCard: false
+    });
+  }
+
+  /* This will handle seletion of lyric 2. */
+  handleSelectLyric2 = () => {
+    this.setState({
+      showInputCard: false,
+      showLyricsCard: false,
+      showQuizCard: false,
+      showCorrectAnswerCard: false,
+      showWrongAnswerCard: true
     });
   }
 
@@ -103,7 +133,7 @@ class HomeContainer extends Component {
               </h3>
               <div className="home-lyrics-footer">
                 <div className="row">
-                <button className="home-lyrics-footer-button" onClick={this.handleReturnToInput}>Create New Song</button>
+                <button className="home-lyrics-footer-button" onClick={this.handleGoToInput}>Create New Song</button>
                 </div>
               </div>
             </div>
@@ -112,12 +142,13 @@ class HomeContainer extends Component {
         {(this.state.showQuizCard)
           ? <div className="home-quiz">
               <div className="row">
-                <h2 className="home-quiz-header">Which is Weird AL and which is Weird AI?</h2>
+                <h2 className="home-quiz-header">Which is Weird AL and which is Weird A.I.?</h2>
                 <div className="col-1-of-2">
                   <div className="home-quiz-card">
                     <h2 className="home-quiz-card-header">Lyric 1</h2>
                     <h3 className="home-quiz-card-lyric">As I walk through the valley where I harvest my grain</h3>
                     <h3 className="home-quiz-card-lyric">I take a look at my wife and realize she's very plain</h3>
+                    <button className="home-quiz-card-button" onClick={this.handleSelectLyric1}>Weird A.I.</button>
                   </div>
                 </div>
                 <div className="col-1-of-2">
@@ -125,6 +156,35 @@ class HomeContainer extends Component {
                     <h2 className="home-quiz-card-header">Lyric 2</h2>
                     <h3 className="home-quiz-card-lyric">As I walk through the valley where I harvest my grain</h3>
                     <h3 className="home-quiz-card-lyric">I take a look at my wife and realize she's very plain</h3>
+                    <button className="home-quiz-card-button" onClick={this.handleSelectLyric2}>Weird A.I.</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          : null
+        }
+        {(this.state.showCorrectAnswerCard)
+          ? <div className="home-answer-correct" style={{backgroundImage: 'url(' + require('../../static/img/al-yankovic.jpg') + ')'}}>
+              <h2 className="home-answer-correct-text">Correct! You successfully detected the Weird A.I. robot.</h2>
+              <div className="home-lyrics-footer">
+                <div className="row">
+                  <div className="home-card-buttons">
+                    <button className="home-lyrics-footer-button" onClick={this.handleGoToQuiz}>Try Another Quote</button>
+                    <button className="home-lyrics-footer-button" onClick={this.handleGoToInput}>Return Home</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          : null
+        }
+        {(this.state.showWrongAnswerCard)
+          ? <div className="home-answer-correct" style={{backgroundImage: 'url(' + require('../../static/img/al-yankovic.jpg') + ')'}}>
+              <h2 className="home-answer-correct-text">Wrong! The Weird A.I. robot defeated you.</h2>
+              <div className="home-lyrics-footer">
+                <div className="row">
+                  <div className="home-card-buttons">
+                    <button className="home-lyrics-footer-button" onClick={this.handleGoToQuiz}>Try Another Quote</button>
+                    <button className="home-lyrics-footer-button" onClick={this.handleGoToInput}>Return Home</button>
                   </div>
                 </div>
               </div>
