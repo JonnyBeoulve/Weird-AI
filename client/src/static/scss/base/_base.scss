@@ -1,0 +1,24 @@
+/*============================================================================
+// General styling definitions
+============================================================================*/
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+    padding: 1rem;
+}
+
+::selection {
+    background-color: $color-primary;
+    color: $color-white;
+}

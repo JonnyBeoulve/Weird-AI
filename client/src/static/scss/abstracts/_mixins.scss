@@ -1,0 +1,32 @@
+/*========================================================================
+// Center content
+========================================================================*/
+@mixin absCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*========================================================================
+// Clearfix hack
+========================================================================*/
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+/*========================================================================
+// Responsive breakpoints
+========================================================================*/
+@mixin respond($breakpoint) {
+    @if $breakpoint == tablet {
+        @media only screen and (max-width: 75em) { @content };
+    }
+    @if $breakpoint == phone {
+        @media only screen and (max-width: 37.5em) { @content };
+    }
+}
