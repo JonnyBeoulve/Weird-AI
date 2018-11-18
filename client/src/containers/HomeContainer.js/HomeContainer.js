@@ -13,7 +13,7 @@ class HomeContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lyrics: lyricsFile.lyrics,
+      lyrics: null,
       lyricsQuizReal: lyricsQuizFile.realLyrics,
       lyricsQuizFake: lyricsQuizFile.weirdAILyrics,
       lyricsQuizAnswer: null,
@@ -31,10 +31,69 @@ class HomeContainer extends Component {
   /* This will handle tag submission. */
   handleTagSubmit = (e) => {
     e.preventDefault();
-    this.setState({
-      showInputCard: false,
-      showLyricsCard: true
-    });
+
+    var tag = this.state.tagInput.toLowerCase();
+    if (tag === 'kitchen') {
+      this.setState({
+        lyrics: lyricsFile[tag],
+        showInputCard: false,
+        showLyricsCard: true
+      });
+    } else if (tag === 'tech') {
+      this.setState({
+        lyrics: lyricsFile[tag],
+        showInputCard: false,
+        showLyricsCard: true
+      });
+    } else if (tag === 'globant') {
+      this.setState({
+        lyrics: lyricsFile[tag],
+        showInputCard: false,
+        showLyricsCard: true
+      });
+    } else if (tag === 'coffee') {
+      this.setState({
+        lyrics: lyricsFile[tag],
+        showInputCard: false,
+        showLyricsCard: true
+      });
+    } else if (tag === 'paisley') {
+      this.setState({
+        lyrics: lyricsFile[tag],
+        showInputCard: false,
+        showLyricsCard: true
+      });
+    } else if (tag === 'albatross') {
+      this.setState({
+        lyrics: lyricsFile[tag],
+        showInputCard: false,
+        showLyricsCard: true
+      });
+    } else if (tag === 'eat') {
+      this.setState({
+        lyrics: lyricsFile[tag],
+        showInputCard: false,
+        showLyricsCard: true
+      });
+    } else if (tag === 'artificial intelligence revolution') {
+      this.setState({
+        lyrics: lyricsFile[tag],
+        showInputCard: false,
+        showLyricsCard: true
+      });
+    } else if (tag === 'hackathon blues') {
+      this.setState({
+        lyrics: lyricsFile[9],
+        showInputCard: false,
+        showLyricsCard: true
+      });
+    } else {
+      this.setState({
+        lyrics: lyricsFile[" "],
+        showInputCard: false,
+        showLyricsCard: true
+      });
+    }
   }
 
   /* This will handle transitioning a user back to the input card. */
@@ -131,7 +190,7 @@ class HomeContainer extends Component {
               <div className="home-card">
                 <h2 className="home-card-header">Throw us a word to write your own song.</h2>
                 <form onSubmit={this.handleTagSubmit}>
-                  <input className="home-card-input" type="email" name="email" placeholder="Enter a word" onChange={e => this.setState({ tagInput: e.target.value })} />
+                  <input className="home-card-input" type="text" placeholder="Enter a word" onChange={e => this.setState({ tagInput: e.target.value })} />
                   <div className="home-card-buttons">
                     <button className="home-card-button" type="submit" value="Submit">Generate a Song</button>
                     <button className="home-card-button-2" onClick={this.handleGoToQuiz}>Can You Spot the Fake?</button>
