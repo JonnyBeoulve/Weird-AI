@@ -6,6 +6,7 @@ import axios from 'axios';
 import '../../static/scss/main.scss';
 
 import lyricsFile from '../../store/lyrics.json';
+import lyricsQuizFile from '../../store/quiz-lyrics.json';
 
 /* The container serves as the home for the app. */
 class HomeContainer extends Component {
@@ -13,6 +14,11 @@ class HomeContainer extends Component {
     super(props);
     this.state = {
       lyrics: lyricsFile.lyrics,
+      lyricsQuizReal: lyricsQuizFile.realLyrics,
+      lyricsQuizFake: lyricsQuizFile.weirdAILyrics,
+      lyricsQuizAnswer: null,
+      lyricsQuizQuestion1: '',
+      lyricsQuizQuestion2: '',
       tagInput: '',
       showInputCard: true,
       showLyricsCard: false,
@@ -29,47 +35,6 @@ class HomeContainer extends Component {
       showInputCard: false,
       showLyricsCard: true
     });
-    /*
-    axios ({
-      method: 'post',
-      url: `http://api.localhost/account/login`,
-      data: {
-          email: this.state.loginEmail,
-          password: this.state.loginPassword
-      },
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => {
-        console.log(res);
-        if(res.data.success === 1) {
-            this.setState({
-                loggedIn: true,
-                loginErrorMessage: ''
-            });
-        } else {
-            console.log(res);
-            this.setState({
-                loginErrorMessage: res.data.message
-            });
-        }
-    })
-    .catch(error => {
-        console.log('Error fetching and parsing data', error);
-    })
-    */
-  }
-  /* This will handle transitioning a user to the quiz card. */
-  handleGoToQuiz = () => {
-    this.setState({
-      showInputCard: false,
-      showLyricsCard: false,
-      showQuizCard: true,
-      showCorrectAnswerCard: false,
-      showWrongAnswerCard: false
-    });
   }
 
   /* This will handle transitioning a user back to the input card. */
@@ -83,26 +48,78 @@ class HomeContainer extends Component {
     });
   }
 
-  /* This will handle seletion of lyric 1. */
-  handleSelectLyric1 = () => {
-    this.setState({
-      showInputCard: false,
-      showLyricsCard: false,
-      showQuizCard: false,
-      showCorrectAnswerCard: true,
-      showWrongAnswerCard: false
-    });
+  /* This will handle transitioning a user to the quiz card. It will
+  randomize questions from a JSON file to be displayed. */
+  handleGoToQuiz = () => {
+    let realLyricIndex = Math.floor(Math.random() * 6);
+    let fakeLyricIndex = Math.floor(Math.random() * 10);
+    let correctAnswerIndex = Math.round(Math.random());
+
+    if (correctAnswerIndex === 0) {
+      this.setState({
+        lyricsQuizAnswer: 0,
+        lyricsQuizQuestion1: this.state.lyricsQuizReal[realLyricIndex],
+        lyricsQuizQuestion2: this.state.lyricsQuizFake[fakeLyricIndex],
+        showInputCard: false,
+        showLyricsCard: false,
+        showQuizCard: true,
+        showCorrectAnswerCard: false,
+        showWrongAnswerCard: false
+      });
+    } else {
+      this.setState({
+        lyricsQuizAnswer: 1,
+        lyricsQuizQuestion1: this.state.lyricsQuizFake[fakeLyricIndex],
+        lyricsQuizQuestion2: this.state.lyricsQuizReal[realLyricIndex],
+        showInputCard: false,
+        showLyricsCard: false,
+        showQuizCard: true,
+        showCorrectAnswerCard: false,
+        showWrongAnswerCard: false
+      });
+    }
   }
 
-  /* This will handle seletion of lyric 2. */
-  handleSelectLyric2 = () => {
-    this.setState({
-      showInputCard: false,
-      showLyricsCard: false,
-      showQuizCard: false,
-      showCorrectAnswerCard: false,
-      showWrongAnswerCard: true
-    });
+  /* This will handle seletion of lyric 1. */
+  handleSelectLyric0 = () => {
+    if (this.state.lyricsQuizAnswer === 0) {
+      this.setState({
+        showInputCard: false,
+        showLyricsCard: false,
+        showQuizCard: false,
+        showCorrectAnswerCard: true,
+        showWrongAnswerCard: false
+      });
+    } else {
+      this.setState({
+        showInputCard: false,
+        showLyricsCard: false,
+        showQuizCard: false,
+        showCorrectAnswerCard: false,
+        showWrongAnswerCard: true
+      });
+    }
+  }
+
+  /* This will handle seletion of lyric 1. */
+  handleSelectLyric1 = () => {
+    if (this.state.lyricsQuizAnswer === 1) {
+      this.setState({
+        showInputCard: false,
+        showLyricsCard: false,
+        showQuizCard: false,
+        showCorrectAnswerCard: true,
+        showWrongAnswerCard: false
+      });
+    } else {
+      this.setState({
+        showInputCard: false,
+        showLyricsCard: false,
+        showQuizCard: false,
+        showCorrectAnswerCard: false,
+        showWrongAnswerCard: true
+      });
+    }
   }
 
   render() {
@@ -127,7 +144,7 @@ class HomeContainer extends Component {
         {(this.state.showLyricsCard)
           ? <div className="home-lyrics">
               <h3 className="home-lyrics-text">
-              {this.state.lyrics.split("\\n").map((i,key) => {
+              {this.state.lyrics.split("\n").map((i,key) => {
                 return <div key={key}>{i}</div>;
               })}
               </h3>
@@ -146,17 +163,19 @@ class HomeContainer extends Component {
                 <div className="col-1-of-2">
                   <div className="home-quiz-card">
                     <h2 className="home-quiz-card-header">Lyric 1</h2>
-                    <h3 className="home-quiz-card-lyric">As I walk through the valley where I harvest my grain</h3>
-                    <h3 className="home-quiz-card-lyric">I take a look at my wife and realize she's very plain</h3>
-                    <button className="home-quiz-card-button" onClick={this.handleSelectLyric1}>Weird A.I.</button>
+                    {this.state.lyricsQuizQuestion1.split("\n").map((i,key) => {
+                      return <h3 className="home-quiz-card-lyric" key={key}>{i}</h3>;
+                    })}
+                    <button className="home-quiz-card-button" onClick={this.handleSelectLyric0}>Weird A.I.</button>
                   </div>
                 </div>
                 <div className="col-1-of-2">
                   <div className="home-quiz-card">
                     <h2 className="home-quiz-card-header">Lyric 2</h2>
-                    <h3 className="home-quiz-card-lyric">As I walk through the valley where I harvest my grain</h3>
-                    <h3 className="home-quiz-card-lyric">I take a look at my wife and realize she's very plain</h3>
-                    <button className="home-quiz-card-button-2" onClick={this.handleSelectLyric2}>Weird A.I.</button>
+                    {this.state.lyricsQuizQuestion2.split("\n").map((i,key) => {
+                      return <h3 className="home-quiz-card-lyric" key={key}>{i}</h3>;
+                    })}
+                    <button className="home-quiz-card-button-2" onClick={this.handleSelectLyric1}>Weird A.I.</button>
                   </div>
                 </div>
               </div>
