@@ -9,6 +9,13 @@ A demo that uses previously arrays of previously generated lyrics can be found b
 
 https://weird-ai-c3e96.firebaseapp.com/
 
+## Tech Stack
+* Python
+* TensorFlow
+* C#
+* React
+* SCSS
+
 ## Contributors
 Jonathan Leack, Front End Developer - https://github.com/JonnyBeoulve
 
