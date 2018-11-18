@@ -12,7 +12,7 @@ https://weird-ai-c3e96.firebaseapp.com/
 ## Contributors
 Jonathan Leack, Front End Developer - https://github.com/JonnyBeoulve
 
-Ivan Sued, Back-End Developer - https://github.com/thefenry
+Ivan Sued, Back nd Developer - https://github.com/thefenry
 
 Nathaniel Watkins, Data Scientist - https://github.com/TheNathanielWatkins
 
