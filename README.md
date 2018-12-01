@@ -9,12 +9,29 @@ A demo that uses previously arrays of previously generated lyrics can be found b
 
 https://weird-ai-c3e96.firebaseapp.com/
 
+> Note: we don't currently have the TensorFlow model backend running for live text generation.  But the demo above has a list of songs created by our 1st generation model.  Try typing in one of the following keywords to see some examples:
+> * AI Revolution
+> * Hackathon Blues
+> * Coffee
+> * Tech
+> * Eat
+> * Albatross
+> * Globant
+> * Kitchen
+
 ## Tech Stack
 * Python
 * TensorFlow
 * C#
 * React
 * SCSS
+
+## TODO
+* Redo web-scrapping to include helpful annotations such as verse/chorus labels and end of line markers
+* Retrain model on new lyrics database
+* Tune new model, but if results are unsatisfactory:
+ * Train a separate model for verses and one for choruses
+ * Implement algorithm to assemble songs line-by-line pulling from the 2 separate models as appropriate
 
 ## Contributors
 Jonathan Leack, Front End Developer - https://github.com/JonnyBeoulve
